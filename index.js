@@ -1,11 +1,14 @@
 const express = require('express')
 const path = require('path')
 const cors = require('cors');
+const bodyParser = require('body-parser')
 require('./config/db');
 
 
 
 const app = express()
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const corsOptions = {
     origin: process.env.ALLOWED_CLIENTS.split(',')
@@ -19,7 +22,7 @@ require('./config/db');
 
 app.use(cors(corsOptions))
 app.use(express.static('public'))
-app.use(express.json());
+
 
 //Template engine
 app.set('views', path.join(__dirname, '/views'))
