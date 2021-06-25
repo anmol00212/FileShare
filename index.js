@@ -12,12 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const corsOptions = {
     origin: process.env.ALLOWED_CLIENTS.split(',')
-    // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
+    ['http://localhost:5000']
   }
 
 
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT 
 require('./config/db');
 
 app.use(cors(corsOptions))
